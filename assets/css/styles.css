@@ -55,9 +55,13 @@ body {
 }
 
 .navbar-logo {
-    height: 30px;
+    height: 50px;
     width: auto;
-    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
 }
 
 .navbar-menu {
@@ -196,7 +200,13 @@ body {
     }
 
     .navbar-logo {
-        height: 25px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-logo {
+        height: 35px;
     }
 }
 
@@ -921,7 +931,7 @@ body {
 @media (max-width: 480px) {
     .text-content h1 {
         font-size: 36px;
-        margin-bottom: 25px;
+    margin-bottom: 25px;
         padding-bottom: 10px;
     }
 }
@@ -2894,7 +2904,7 @@ body {
     .subtitle-container .sistema {
         font-size: 2.5rem;
     }
-
+    
     .diprosoft-badge {
         font-size: 1.5rem;
     }
@@ -3733,16 +3743,6 @@ body {
 
     .recurso-item span {
         font-size: 13px;
-    }
-
-    .icon-circle {
-        width: 35px;
-        height: 35px;
-    }
-
-    .recurso-icon {
-        width: 18px;
-        height: 18px;
     }
 }
 
@@ -4598,4 +4598,666 @@ body {
         opacity: 1;
         transform: none;
     }
+}
+
+/* Banner Revenda - NOVO CSS */
+.revenda-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.revenda-banner-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: url('assets/imagens/revenda-formulario.jpg') center center/cover no-repeat;
+  z-index: 1;
+}
+
+.revenda-banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  animation: slideInUp 0.8s ease-out 0.2s backwards;
+}
+
+.revenda-banner-left {
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.revenda-banner-img {
+  width: 100%;
+  height: 100vh;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  animation: slideInLeft 0.8s ease-out 0.3s backwards;
+}
+
+.revenda-banner-right {
+  flex: 1;
+  background-color: #2B1B42; /* Roxo Diprosoft */
+  /* Borda com bico igual ao segmentos */
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0% 30%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #fff;
+  animation: slideInRight 0.8s ease-out 0.4s backwards;
+}
+
+
+.revenda-orange {
+  color: #f58220;
+}
+
+.revenda-white {
+  color: #ffffff;
+}
+
+.revenda-banner-text p {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.revenda-lucros {
+  margin-top: 20px;
+  background-color: #f58220;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .revenda-banner-content {
+    flex-direction: column;
+  }
+
+  .revenda-banner-right {
+    clip-path: none;
+    width: 100%;
+  }
+
+  .revenda-banner-text h1 {
+    font-size: 36px;
+  }
+
+  .revenda-banner-text p {
+    font-size: 20px;
+  }
+
+  .revenda-lucros {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .revenda-banner-left {
+    height: auto;
+    min-height: auto;
+    padding: 20px;
+  }
+  .revenda-banner-img {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+.revenda-titulo {
+  font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+  font-size: 7rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  line-height: 1;
+  text-align: left;
+  background: linear-gradient(90deg, #FF8A00 0%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.revenda-subtitulo {
+  color: #fff;
+  font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.revenda-lucros-destaque {
+  background: #f58220;
+  color: #fff;
+  font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+  font-size: 2.1rem;
+  font-weight: 900;
+  border-radius: 18px;
+  padding: 18px 32px;
+  margin-top: 10px;
+  display: inline-block;
+  text-align: left;
+  box-shadow: none;
+}
+
+@media (max-width: 1200px) {
+  .revenda-titulo {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 600px) {
+  .revenda-titulo {
+    font-size: 2rem;
+  }
+}
+
+.foto-atendente-container {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.logo-camisa {
+  position: absolute;
+  z-index: 3;
+  top: 62%;    /* Ajuste conforme necessário */
+  left: 37%;   /* Empurra para o lado direito */
+  width: 60px; /* Ajuste o tamanho conforme necessário */
+  pointer-events: none;
+  transform: rotate(-12deg); /* Gira levemente para a esquerda */
+  opacity: 0.7; /* Deixa mais transparente */
+}
+
+@media (max-width: 768px) {
+  .logo-camisa {
+    top: 68%;
+    left: 40%;
+    width: 28px; /* Reduzido ainda mais para tablet/mobile */
+    transform: rotate(-10deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-camisa {
+    top: 70%;
+    left: 40%;
+    width: 16px; /* Reduzido ainda mais para smartphones */
+    transform: rotate(-8deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .revenda-banner-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .revenda-banner-text {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .revenda-banner-text {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px; /* Garante espaço lateral */
+  }
+  .revenda-subtitulo {
+    font-size: 1.5rem;
+    max-width: 260px; /* Limita a largura para melhor quebra */
+    margin-bottom: 12px;
+    line-height: 1.3;
+    word-break: break-word;
+    margin-left: 45px;
+  }
+}
+
+/* Seção bottom da revenda */
+.revenda-bottom {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background-color: #2B1B42;
+  animation: fadeIn 1s ease-out 0.2s backwards;
+}
+
+.revenda-bottom-title {
+  width: 100vw;
+  max-width: 100vw;
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 auto 2.5rem auto;
+  padding-top: 5vh;
+  padding-bottom: 2vh;
+  z-index: 3;
+  /* Removido display: flex, align-items e justify-content para preservar espaços no texto */
+  animation: slideInUp 0.8s ease-out 0.3s backwards;
+}
+
+.revenda-bottom-content {
+  display: flex;
+  flex: 1;
+  width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  animation: slideInUp 0.8s ease-out 0.4s backwards;
+}
+
+.revenda-bottom-left {
+  width: 50%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 24px 40px 32px;
+  background: transparent;
+  animation: slideInLeft 0.8s ease-out 0.5s backwards;
+}
+
+.revenda-bottom-right {
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+  animation: slideInRight 0.8s ease-out 0.6s backwards;
+}
+
+.revenda-bottom-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 0;
+}
+
+.revenda-bottom-desc,
+.revenda-bottom-funciona,
+.revenda-bottom-funciona span,
+.revenda-bottom-beneficios,
+.revenda-bottom-lista,
+.revenda-bottom-lista li {
+  color: #fff !important;
+}
+
+.revenda-bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30vw; /* 30% da largura da viewport */
+  height: 100%;
+  background: #FF8A00; /* Laranja */
+  z-index: 1;
+  pointer-events: none; /* Não interfere nos cliques */
+  /* Removido border-top-right-radius e border-bottom-right-radius para borda reta */
+}
+
+.revenda-bottom,
+.revenda-bottom * {
+  position: relative;
+  z-index: 2;
+}
+
+.revenda-bottom-funciona {
+  background: var(--primary-color); /* Roxo escuro */
+  color: #fff !important;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 12px rgba(45,27,59,0.08);
+}
+
+@media (max-width: 768px) {
+  .revenda-bottom-funciona {
+    font-size: 1rem;
+    padding: 10px 18px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .revenda-bottom-funciona {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    border-radius: 8px;
+    max-width: 100%;
+    word-break: break-word;
+  }
+}
+
+.revenda-vantagens {
+  width: 100vw;
+  max-width: 100vw;
+  background: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 32px 5vw 32px 5vw;
+  box-sizing: border-box;
+  margin: 0;
+  gap: 32px;
+  animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+.revenda-vantagens-texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.revenda-vantagens-titulo {
+  color: var(--secondary-color);
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 18px;
+  animation: slideInUp 0.8s ease-out 0.4s backwards;
+}
+
+.revenda-vantagens-lista {
+  color: #fff;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: slideInLeft 0.8s ease-out 0.5s backwards;
+}
+
+.revenda-vantagens-lista li {
+  margin-bottom: 6px;
+}
+
+.revenda-vantagens-lista b {
+  font-weight: 700;
+}
+
+.revenda-vantagens-img {
+  width: 220px;
+  min-width: 120px;
+  max-width: 240px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-left: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  animation: slideInRight 0.8s ease-out 0.6s backwards;
+}
+
+@media (max-width: 900px) {
+  .revenda-vantagens {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 3vw;
+    gap: 18px;
+  }
+  .revenda-vantagens-img {
+    margin-left: 0;
+    margin-top: 18px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .revenda-vantagens {
+    padding: 16px 2vw;
+  }
+  .revenda-vantagens-titulo {
+    font-size: 1.2rem;
+  }
+  .revenda-vantagens-img {
+    max-width: 90vw;
+    border-radius: 8px;
+  }
+}
+
+.revenda-formulario {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out 0.4s backwards;
+  }
+  
+  .revenda-formulario-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('assets/imagens/revenda-formulario.jpg') center center/cover no-repeat;
+    z-index: 1;
+  }
+  
+  .revenda-formulario-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 138, 0, 0.55); /* Laranja translúcido */
+    z-index: 2;
+  }
+  
+  .revenda-formulario-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between;
+    gap: 48px;
+    padding: 48px 0;
+    min-height: 600px; /* Garante altura mínima para centralização */
+    animation: slideInUp 0.8s ease-out 0.5s backwards;
+  }
+  
+  .revenda-formulario-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    max-width: 50%;
+    padding-left: 32px;
+    align-items: flex-start; /* Alinha à esquerda no desktop */
+    min-height: 400px;
+    animation: slideInLeft 0.8s ease-out 0.6s backwards;
+  }
+  
+  .revenda-formulario-info h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  
+  .revenda-formulario-sub {
+    background: #2B1B42;
+    color: #fff;
+    display: inline-block;
+    padding: 8px 22px;
+    border-radius: 18px;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+  }
+  
+  .revenda-formulario-chamada {
+    background: #fff3e0;
+    color: #FF8A00;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-top: 32px;
+    max-width: 420px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .revenda-formulario-chamada b {
+    color: #FF8A00;
+    font-weight: 700;
+  }
+  
+  .revenda-formulario-box {
+    background: #2B1B42;
+    border-radius: 22px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    padding: 32px 32px 18px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 340px;
+    max-width: 400px;
+    gap: 16px;
+    justify-content: center;
+    align-self: center; /* Centraliza o formulário verticalmente */
+    animation: slideInRight 0.8s ease-out 0.7s backwards;
+  }
+  
+  .revenda-formulario-logo {
+    width: 180px;
+    margin: 0 auto 12px auto;
+    display: block;
+  }
+  
+  .revenda-formulario-box input,
+  .revenda-formulario-box textarea {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: #2B1B42;
+    outline: none;
+    resize: none;
+  }
+  
+  .revenda-formulario-box textarea {
+    min-height: 60px;
+    max-height: 120px;
+  }
+  
+  .revenda-formulario-box button {
+    background: #FF8A00;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+  }
+  
+  .revenda-formulario-box button:hover {
+    background: #ff9f2f;
+  }
+  
+  .revenda-formulario-legenda {
+    color: #fff;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 8px;
+    opacity: 0.8;
+  }
+  
+  @media (max-width: 900px) {
+    .revenda-formulario-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 32px 0;
+      min-height: 0;
+    }
+    .revenda-formulario-info {
+      max-width: 100%;
+      padding-left: 0;
+      text-align: center;
+      align-items: center;
+      min-height: 0;
+    }
+    .revenda-formulario-box {
+      align-self: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .revenda-formulario-content {
+      padding: 16px 0;
+      gap: 18px;
+    }
+    .revenda-formulario-box {
+      padding: 18px 6px 10px 6px;
+      border-radius: 12px;
+    }
+    .revenda-formulario-logo {
+      width: 120px;
+    }
+  }
+
+.revenda-formulario-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+.revenda-formulario-img-bg {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 1;
 }
