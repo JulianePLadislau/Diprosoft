@@ -17,6 +17,7 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
+    background-color: #fff;
 }
 
 .container {
@@ -895,9 +896,61 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 40px;
+    background-color: #FF8A00;
+    overflow: hidden;
 }
 
-/* Box de texto */
+/* Ondas */
+.bottom-section .waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bottom-section .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-color: #2D1B3E;
+    border-radius: 50% 50% 0 0;
+}
+
+.bottom-section .wave1 {
+    bottom: -25%;
+    opacity: 0.7;
+    animation: moveWave 10s linear infinite;
+}
+
+.bottom-section .wave2 {
+    bottom: -35%;
+    opacity: 0.5;
+    animation: moveWave 8s linear infinite;
+}
+
+.bottom-section .wave3 {
+    bottom: -45%;
+    opacity: 0.3;
+    animation: moveWave 6s linear infinite;
+}
+
+@keyframes moveWave {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
 .text-box {
     background-color: #2D1B3E;
     padding: 30px;
@@ -911,12 +964,21 @@ body {
     margin-left: 40px;
 }
 
-.text-box p {
-    margin-bottom: 25px;
+.bottom-image {
+    position: relative;
+    width: 50%;
+    height: auto;
+    aspect-ratio: 4/3;
+    border-radius: 15px;
+    overflow: hidden;
+    z-index: 2;
+    margin-right: 40px;
 }
 
-.text-box p:last-child {
-    margin-bottom: 0;
+.bottom-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Seção de imagens */
@@ -981,7 +1043,7 @@ body {
     aspect-ratio: 4/3;
     border-radius: 15px;
     overflow: hidden;
-    z-index: 2; /* Aumentado para garantir que fique sobre as ondas */
+    z-index: 4;
 }
 
 .bottom-image::before {
@@ -1041,58 +1103,6 @@ body {
         font-size: 18px;
     }
 }
-
-/* Ondas */
-.waves {
-    position: absolute;
-    bottom: -100px; /* Ajustado de -200px para -100px */
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Garante que fique atrás da imagem */
-    overflow: hidden;
-}
-
-.wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: rgba(45, 27, 62, 0.2);
-    border-radius: 50% 50% 0 0;
-    animation: wave 15s linear infinite;
-}
-
-.wave1 {
-    animation-delay: 0s;
-    bottom: -35%; /* Ajustado de -65% para -35% */
-}
-
-.wave2 {
-    animation-delay: -5s;
-    bottom: -45%; /* Ajustado de -75% para -45% */
-    background: rgba(45, 27, 62, 0.15);
-}
-
-.wave3 {
-    animation-delay: -10s;
-    bottom: -55%; /* Ajustado de -85% para -55% */
-    background: rgba(45, 27, 62, 0.1);
-}
-
-@keyframes wave {
-    0% {
-        transform: translateX(0) scale(1);
-    }
-    50% {
-        transform: translateX(-25%) scale(0.8);
-    }
-    100% {
-        transform: translateX(-50%) scale(1);
-    }
-}
-
 
 /* Estilos da página ERP */
 .erp-content {
@@ -1227,7 +1237,7 @@ body {
     top: 0;
     right: 26%;
     width: 15px;
-    height: 100%;
+    height: 100vh;
     background-color: #2D1B3E;
     transform: skew(-20deg);
     transform-origin: top;
@@ -1368,7 +1378,7 @@ body {
 
 .corner-shape {
     position: absolute;
-    bottom: 20px;
+    bottom: 2px;
     right: 0;
     width: 150px;
     height: 150px;
@@ -1481,21 +1491,64 @@ body {
     display: flex;
     gap: 40px;
     align-items: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .recursos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 60%;
+}
+
+.recurso-item {
     display: flex;
-    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 15px;
     padding: 20px;
-    justify-content: flex-start;
-    position: relative;
-    width: fit-content;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.recurso-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-circle.coral {
+    background-color: #FF6B00;
+}
+
+.recurso-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.recurso-item span {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.4;
 }
 
 .recursos-preview {
-    width: 50%;
-    position: relative;
+    width: 40%;
+    position: sticky;
+    top: 100px;
 }
 
 .preview-box {
@@ -1526,32 +1579,28 @@ body {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.recurso-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    transition: all 0.3s ease;
+@media (max-width: 1200px) {
+    .recursos-wrapper {
+        flex-direction: column;
+    }
+
+    .recursos-grid,
+    .recursos-preview {
+        width: 100%;
+    }
+
+    .recursos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.recurso-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.recurso-item i {
-    font-size: 24px;
-    color: var(--secondary-color);
-}
-
-.recurso-item span {
-    font-size: 16px;
-    color: var(--text-dark);
-    line-height: 1.4;
+@media (max-width: 768px) {
+    .recursos-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Box de Destaque */
@@ -1590,35 +1639,6 @@ body {
 
 .destaque-images img:hover {
     transform: scale(1.05);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .solucoes-content {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .solucoes-text,
-    .solucoes-image {
-        width: 100%;
-    }
-
-    .solucoes-image {
-        clip-path: none;
-        height: 300px;
-    }
-
-    .recursos-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-auto-flow: row;
-    }
-
-    .destaque-images {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
 }
 
 .icon-circle {
@@ -2043,15 +2063,14 @@ body {
     letter-spacing: -2px;
     position: relative;
     z-index: 10;
+    color: transparent;
+    position: relative;
+    display: flex;
 }
 
-/* Parte "Seg" com degradê */
+/* Removendo o pseudo-elemento que adiciona "Seg" */
 .diferenciais-top .text-content .title::before {
-    content: "Seg";
-    background: linear-gradient(to right, #FFFFFF 0%, #e0e0e0 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    content: none;
 }
 
 /* Parte "mentos" em branco transparente */
@@ -2060,13 +2079,6 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-/* Esconde o texto original "Seg" */
-.diferenciais-top .text-content .title {
-    color: transparent;
-    position: relative;
-    display: flex;
 }
 
 .diferenciais-top .text-content .subtitle {
@@ -2184,7 +2196,6 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0;
-    position: relative;
 }
 
 .diferenciais-content {
@@ -2267,7 +2278,7 @@ body {
 }
 
 /* Estilos das ondas */
-.waves-container {
+.diferenciais-bottom .waves-container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -2276,35 +2287,36 @@ body {
     overflow: hidden;
 }
 
-.wave {
+.diferenciais-bottom .wave {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 200%;
     height: 100%;
-    background: rgba(255, 122, 0, 0.1); /* Coral com transparência */
+    background-color: #F5D6BE;
     border-radius: 50% 50% 0 0;
     animation: wave 15s linear infinite;
 }
 
-.wave1 {
+.diferenciais-bottom .wave1 {
     animation-delay: 0s;
     bottom: -25%;
-    opacity: 0.3;
+    opacity: 0.7;
+    z-index: 1;
 }
 
-.wave2 {
+.diferenciais-bottom .wave2 {
     animation-delay: -5s;
     bottom: -35%;
-    background: rgba(255, 122, 0, 0.2);
     opacity: 0.5;
+    z-index: 2;
 }
 
-.wave3 {
+.diferenciais-bottom .wave3 {
     animation-delay: -2s;
     bottom: -45%;
-    background: rgba(255, 122, 0, 0.3);
-    opacity: 0.7;
+    opacity: 0.3;
+    z-index: 3;
 }
 
 @keyframes wave {
@@ -2366,7 +2378,7 @@ body {
     top: 0;
     height: 100%;
     width: 45%;
-    background-color: rgba(255, 128, 0, 0.9); /* Laranja mais transparente */
+    background-color: rgba(255, 128, 0, 0.9);
     clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0% 30%);
     display: flex;
     flex-direction: column;
@@ -2408,6 +2420,9 @@ body {
 
 .subtitle-container {
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .subtitle-container p {
@@ -2419,22 +2434,26 @@ body {
 }
 
 .sistema {
-    font-size: 4rem !important;
+    font-size: 4.5rem !important;
     font-weight: 700 !important;
-    margin: 0.5rem 0 !important;
+    margin: 0 !important;
     color: #fff !important;
+    display: block;
+    line-height: 1 !important;
 }
 
 .diprosoft-badge {
     background-color: #2D1B3B;
     color: white;
     display: inline-block;
-    margin-top: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 2.2rem;
+    margin-top: 0;
+    padding: 0.3rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 3.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-self: flex-start;
+    line-height: 1;
 }
 
 @media (max-width: 1024px) {
@@ -2474,8 +2493,7 @@ body {
 
 .segmentos-bottom {
     background: #2D1B3B;
-    position: relative;
-    padding: 40px 0;
+    padding: 80px 40px;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -2484,1022 +2502,213 @@ body {
 .segmentos-bottom .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0;
-    position: relative;
+    padding: 0 20px;
 }
 
 .segmentos-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(8, 120px);
     gap: 15px;
-    padding: 20px;
-    justify-content: flex-start;
-    position: relative;
     width: fit-content;
+    margin: 0 auto;
+    margin-top: 40px;
 }
 
 .segmento-card {
+    width: 120px;
+    aspect-ratio: 2/3;
+    position: relative;
     border-radius: 12px;
-    padding: 15px 10px;
-    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.segmento-card .card-bg {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    position: relative;
+}
+
+.segmento-card .card-content {
+    position: relative;
+    z-index: 2;
+    height: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    overflow: hidden;
-    position: relative;
-    background-color: #FFFFFF;
-    border: 2px solid #FF8000;
-    width: 140px;
-    height: 190px;
-    margin-top: 0;
+    padding: 25px 8px 12px;
+    background: #FFFFFF;
+}
+
+.segmento-card .segmento-icon {
+    width: 35px;
+    height: 35px;
+    background: #2D1B3B;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.segmento-card .segmento-icon i {
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.segmento-card h3 {
+    font-size: 11.5px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: auto 0;
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.segmento-card .confirma {
+    margin-top: auto;
+    margin-bottom: 12px;
+    background: #2D1B3B;
+    color: #FFFFFF;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    cursor: pointer;
     transition: all 0.3s ease;
+    width: 70px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.2px;
 }
 
-/* Estilos específicos para cards brancos */
-.segmento-card:nth-child(even) {
-    background-color: #FFFFFF;
-    margin-top: 40px;
-    position: relative;
+.segmento-card .confirma:hover {
+    background: #3d2b4b;
+    transform: translateY(-2px);
 }
 
-.segmento-card:nth-child(even)::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -5px;
-    width: 10px;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255, 128, 0, 0.2));
-}
-
-.segmento-card:nth-child(even) .icon {
-    background-color: #2D1B3B;
-}
-
-.segmento-card:nth-child(even) h3 {
-    color: #FF6B00;
-}
-
-.segmento-card:nth-child(even) .confirma {
-    background-color: #2D1B3B;
-    color: #FFFFFF;
-}
-
-/* Estilos específicos para cards laranjas */
+/* Cards ímpares (laranjas) - mais altos */
 .segmento-card:nth-child(odd) {
-    background-color: #FF8000;
-    border-color: transparent;
-    margin-top: -10px;
-    position: relative;
+    margin-top: -30px;
+    box-shadow: 0 4px 12px rgba(255, 128, 0, 0.2);
 }
 
-.segmento-card:nth-child(odd)::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-color: #FF8000;
-    opacity: 0.5;
-    z-index: 1;
-}
-
-.segmento-card:nth-child(odd) .icon {
-    background-color: #2D1B3B;
-}
-
-.segmento-card:nth-child(odd) .icon i {
-    color: #FFFFFF;
+.segmento-card:nth-child(odd) .card-content {
+    background: #FF8000;
 }
 
 .segmento-card:nth-child(odd) h3 {
     color: #FFFFFF;
 }
 
-.segmento-card:nth-child(odd) .confirma {
-    background-color: #2D1B3B;
-    color: #FFFFFF;
+.segmento-card:nth-child(odd) .card-bg {
+    filter: sepia(100%) saturate(300%) brightness(90%) hue-rotate(320deg);
+    opacity: 0.9;
+    box-shadow: 0 4px 16px rgba(255, 128, 0, 0.6);
 }
 
-/* Ajuste para o último card */
-.segmento-card:nth-child(17)::after {
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2));
+.segmento-card:nth-child(odd) .card-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FF8000;
+    mix-blend-mode: multiply;
+    opacity: 0.4;
+    box-shadow: inset 0 0 20px rgba(255, 128, 0, 0.8);
 }
 
-/* Estilos base dos elementos */
-.segmento-card .icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5px;
+/* Cards pares (brancos) - mais baixos */
+.segmento-card:nth-child(even) {
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(45, 27, 59, 0.1);
 }
 
-.segmento-card .icon i {
-    font-size: 16px;
-    color: #FFFFFF;
+.segmento-card:nth-child(even) .card-content {
+    background: #FFFFFF;
 }
 
-.segmento-card .confirma {
-    border: none;
-    padding: 6px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-    margin-top: auto;
-    width: 85%;
+.segmento-card:nth-child(even) h3 {
+    color: #FF8000;
 }
 
+.segmento-card:nth-child(even) .card-bg {
+    filter: grayscale(100%) contrast(110%) brightness(90%);
+}
+
+/* Efeito hover geral do card */
 .segmento-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
 }
 
-@media (max-width: 1400px) {
-    .segmentos-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
+/* Sombras específicas no hover */
+.segmento-card:nth-child(odd):hover {
+    box-shadow: 0 8px 16px rgba(255, 128, 0, 0.3),
+                0 4px 8px rgba(255, 128, 0, 0.2);
 }
 
-@media (max-width: 1100px) {
+.segmento-card:nth-child(even):hover {
+    box-shadow: 0 8px 16px rgba(45, 27, 59, 0.15),
+                0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito hover na imagem */
+.segmento-card .card-bg {
+    transition: transform 0.3s ease;
+}
+
+.segmento-card:hover .card-bg {
+    transform: scale(1.1);
+}
+
+/* Efeito hover no círculo */
+.segmento-card .segmento-icon {
+    transition: all 0.3s ease;
+}
+
+.segmento-card:hover .segmento-icon {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: #3d2b4b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito hover no botão */
+.segmento-card .confirma {
+    transition: all 0.3s ease;
+}
+
+.segmento-card:hover .confirma {
+    background: #3d2b4b;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
     .segmentos-grid {
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, auto);
     }
 }
 
 @media (max-width: 768px) {
     .segmentos-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .segmentos-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, auto);
     }
-}
-
-/* Card de mercadinhos com imagem de fundo */
-.segmento-card:nth-child(16) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FFFFFF;
-}
-
-.segmento-card:nth-child(16)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-mercadinhos.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(16) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(16) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(16) h3,
-.segmento-card:nth-child(16) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Último card - Material de Construção */
-.segmento-card:nth-child(17) { 
-    position: absolute;
-    top: calc(50% - 95px);
-    left: calc(8 * (140px + 15px) + 27px);
-    margin-top: 0 !important;
-    z-index: 2;
-    background-color: #FF8000;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-}
-
-.segmento-card h3 {
-    font-size: 0.85rem;
-    font-weight: 500;
-    line-height: 1.2;
-    margin: 0;
-}
-
-.segmento-card:nth-child(17)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-construcao.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(17) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(17) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(17) h3,
-.segmento-card:nth-child(17) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de padaria com imagem de fundo */
-.segmento-card:nth-child(10) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-}
-
-.segmento-card:nth-child(10)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-padaria.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(10) .icon {
-    margin-top: calc(40% + 10px);
-}
-
-.segmento-card:nth-child(10) .icon,
-.segmento-card:nth-child(10) h3,
-.segmento-card:nth-child(10) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de ótica com imagem de fundo */
-.segmento-card:nth-child(9) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(9)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-oculos.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(9) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(9) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(9) h3,
-.segmento-card:nth-child(9) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de pet shop com imagem de fundo */
-.segmento-card:nth-child(11) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(11)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-petshop.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(11) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(11) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(11) h3,
-.segmento-card:nth-child(11) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de cosméticos com imagem de fundo */
-.segmento-card:nth-child(4) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FFFFFF !important;
-}
-
-.segmento-card:nth-child(4)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-cosmeticos.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(4) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(4) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(4) h3,
-.segmento-card:nth-child(4) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de presentes com imagem de fundo */
-.segmento-card:nth-child(12) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FFFFFF !important;
-}
-
-.segmento-card:nth-child(12)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-presentes.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(12) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(12) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(12) h3,
-.segmento-card:nth-child(12) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de tabacaria com imagem de fundo */
-.segmento-card:nth-child(13) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(13)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-tabacaria.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(13) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(13) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(13) h3,
-.segmento-card:nth-child(13) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de vestuário com imagem de fundo */
-.segmento-card:nth-child(14) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FFFFFF;
-}
-
-.segmento-card:nth-child(14)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-vestuario.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(14) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(14) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(14) h3,
-.segmento-card:nth-child(14) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de supermercado com imagem de fundo */
-.segmento-card:nth-child(15) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(15)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-mercados.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(15) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(15) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(15) h3,
-.segmento-card:nth-child(15) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de lojas de conveniência com imagem de fundo */
-.segmento-card:nth-child(8) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FFFFFF;
-}
-
-.segmento-card:nth-child(8)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-conveniencia.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(8) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(8) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(8) h3,
-.segmento-card:nth-child(8) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de livrarias com imagem de fundo */
-.segmento-card:nth-child(7) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(7)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-livraria.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(7) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(7) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(7) h3,
-.segmento-card:nth-child(7) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de joalherias com imagem de fundo */
-.segmento-card:nth-child(6) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FFFFFF;
-}
-
-.segmento-card:nth-child(6)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-joia.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(6) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(6) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(6) h3,
-.segmento-card:nth-child(6) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de oficina mecânica com imagem de fundo */
-.segmento-card:nth-child(5) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(5)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-mecanica.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(5) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(5) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(5) h3,
-.segmento-card:nth-child(5) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de varejo com imagem de fundo */
-.segmento-card:nth-child(1) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(1)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-varejo.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-}
-
-.segmento-card:nth-child(1) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(1) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(1) h3,
-.segmento-card:nth-child(1) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de atacado com imagem de fundo */
-.segmento-card:nth-child(2) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FFFFFF;
-}
-
-.segmento-card:nth-child(2)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-atacado.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-}
-
-.segmento-card:nth-child(2) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(2) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(2) h3,
-.segmento-card:nth-child(2) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Card de lanchonetes com imagem de fundo */
-.segmento-card:nth-child(3) {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    background-color: #FF8000;
-}
-
-.segmento-card:nth-child(3)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-image: url('../imagens/segmentos-hamburguer.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-}
-
-.segmento-card:nth-child(3) .icon {
-    margin-top: calc(40% + 10px);
-    background-color: #2D1B3B !important;
-    position: relative;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.segmento-card:nth-child(3) .icon i {
-    color: #FFFFFF !important;
-    font-size: 16px;
-}
-
-.segmento-card:nth-child(3) h3,
-.segmento-card:nth-child(3) .confirma {
-    position: relative;
-    z-index: 1;
-}
-
-/* Modificando o filtro para cards ímpares (laranja) */
-.segmento-card:nth-child(odd)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-}
-
-.segmento-card:nth-child(odd)::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-color: #FF8000;
-    opacity: 0.7;
-    z-index: 1;
-}
-
-/* Ajustando z-index dos elementos para ficarem sobre a sobreposição laranja */
-.segmento-card:nth-child(odd) .icon {
-    z-index: 2;
-}
-
-.segmento-card:nth-child(odd) h3,
-.segmento-card:nth-child(odd) .confirma {
-    z-index: 2;
-}
-
-/* Mantendo o grayscale apenas para cards pares (brancos) */
-.segmento-card:nth-child(even)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40%;
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
 }
 
